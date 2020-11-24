@@ -59,7 +59,10 @@ const quotes = [
 /***
  * `getRandomQuote` function
 ***/
-
+function getRandomQuote(value) {
+  randomNumber = Math.floor(Math.random() * (value.length + 1))
+  return value[randomNumber]
+}
 
 
 /***
