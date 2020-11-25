@@ -86,11 +86,11 @@ function printQuote() {
   }
 
   if (quote["year"]) {
-    quoteDisplay += `<span class="citation"> ${quote.year} </span>`
+    quoteDisplay += `<span class="year"> ${quote.year} </span>`
   }
 
   if (quote["tag"]) {
-    quoteDisplay += `<span class="citation"> ${quote.tag} </span>`
+    quoteDisplay += `<span class="tag"> ${quote.tag} </span>`
   }
 
   quoteDisplay += `</p>`
@@ -98,9 +98,27 @@ function printQuote() {
   return document.getElementById('quote-box').innerHTML = quoteDisplay; 
 }
 
+/**  
+ * Random page background color generator
+ * Changes colors after every click or refresh
+**/
+function randomColor() {
+  let red = Math.floor(Math.random() * 255) + 1
+  let green = Math.floor(Math.random() * 255) + 1
+  let blue = Math.floor(Math.random() * 255) + 1
+  let displayColor = `rgb(${red}, ${green}, ${blue})`
+  return document.body.style.backgroundColor = displayColor
+}
+function autoDisplay() {
+   let quote = setInterval(printQuote, 10000)
+   let color = setInterval(randomColor, 10000)
+   return quote + color
+}
 /***
  * click event listener for the print quote button
+ * Auto display of quotes also generates if no click
  * DO NOT CHANGE THE CODE BELOW!!
 ***/
-
+autoDisplay() 
  document.getElementById('load-quote').addEventListener("click", printQuote, false);
+ document.getElementById('load-quote').addEventListener("click", randomColor, false);
