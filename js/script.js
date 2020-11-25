@@ -8,7 +8,7 @@ project 1 - A Random Quote Generator
   // Reach out in your Slack community - https://treehouse-fsjs-102.slack.com/app_redirect?channel=chit-chat
 
 /*** 
- * `quotes` array 
+ * `quotes` array with quote, source, citation(optional), and year(optional) keys
 ***/
 const quotes = [
   {
@@ -49,7 +49,7 @@ const quotes = [
   },
   {
     quote: "You have brains in your head. You have feet in your shoes. You can steer yourself any direction you choose.",
-    source: "",
+    source: "Dr. Seuss",
     citation: "Oh, the Places You'll Go!",
     year: 2012
   },
@@ -58,22 +58,42 @@ const quotes = [
 
 /***
  * `getRandomQuote` function
+ * Takes in an array and uses array length for upper value in
+ * generating a random number
 ***/
 function getRandomQuote(value) {
-  randomNumber = Math.floor(Math.random() * (value.length + 1))
+  randomNumber = Math.floor(Math.random() * (value.length))
   return value[randomNumber]
 }
 
 
 /***
- * `printQuote` function
+ * `printQuote` function 
+ * Uses getRandomQuote quote object to create a quote display
+ * Returns innerHTML quote display showing one quote object 
 ***/
+function printQuote() {
+  let quote = getRandomQuote(quotes)
+  let quoteDisplay = `
+    <p class="quote"> ${quote.quote} </p>
+    <p class="source"> ${quote.source}
+  `
+  if (quote["citation"]) {
+    quoteDisplay += `<span class="citation"> ${quote.citation} </span>`
+  }
 
+  if (quote["year"]) {
+    quoteDisplay += `<span class="citation"> ${quote.year} </span>`
+  }
 
+  quoteDisplay += `</p>`
+
+  return document.getElementById('quote-box').innerHTML = quoteDisplay; 
+}
 
 /***
  * click event listener for the print quote button
  * DO NOT CHANGE THE CODE BELOW!!
 ***/
 
-// document.getElementById('load-quote').addEventListener("click", printQuote, false);
+ document.getElementById('load-quote').addEventListener("click", printQuote, false);
