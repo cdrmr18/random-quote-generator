@@ -13,7 +13,8 @@ project 1 - A Random Quote Generator
 const quotes = [
   {
     quote: "Your time is limited, so don't waste it living someone else's life. Don't be trapped by dogma – which is living with the results of other people's thinking.",
-    source: "Steve Jobs"
+    source: "Steve Jobs",
+    tag: "Inspirational"
   },
   {
     quote: "If you look at what you have in life, you'll always have more. If you look at what you don't have in life, you'll never have enough.",
@@ -29,7 +30,8 @@ const quotes = [
   },
   {
     quote: "Spread love everywhere you go. Let no one ever come to you without leaving happier.",
-    source: "Mother Teresa"
+    source: "Mother Teresa",
+    tag: "Peace"
   },
   {
     quote: "The best and most beautiful things in the world cannot be seen or even touched - they must be felt with the heart." ,
@@ -41,7 +43,8 @@ const quotes = [
   },
   {
     quote: "You will face many defeats in life, but never let yourself be defeated.",
-    source: "Maya Angelou"
+    source: "Maya Angelou",
+    tag: "Perserverance"
   },
   {
     quote: "Love the life you live. Live the life you love.",
@@ -84,6 +87,10 @@ function printQuote() {
 
   if (quote["year"]) {
     quoteDisplay += `<span class="citation"> ${quote.year} </span>`
+  }
+
+  if (quote["tag"]) {
+    quoteDisplay += `<span class="citation"> ${quote.tag} </span>`
   }
 
   quoteDisplay += `</p>`
